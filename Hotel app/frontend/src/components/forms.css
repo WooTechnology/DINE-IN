@@ -1,0 +1,4 @@
+.box-t1{
+      border: 10px black ;
+      box-shadow: 0 1px 6px rgba(58, 49, 49, 0.27),0 0 40px rgba(0,0,0,.06) inset;
+}
