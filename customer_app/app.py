@@ -1,10 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-# from flask_sqlalchemy import SQLAlchemy
-# from datetime import datetime
-# from flask_wtf import FlaskForm
-# from wtforms import Form, StringField, TextAreaField, PasswordField, validators
-# from passlib.hash import sha256_crypt
-
 
 app = Flask(__name__)
 
@@ -16,7 +10,7 @@ def home():
 @app.route("/check-in")
 def checkin():
     """render the QR code scan page"""
-    return render_template("home.html")
+    return render_template("scanQR.html")
 
 @app.route("/fill-details")
 def fillcustomerdetails():
