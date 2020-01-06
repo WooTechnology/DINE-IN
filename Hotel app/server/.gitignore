@@ -1,0 +1,4 @@
+*.db
+static/
+templates/
+__pycache__
