@@ -149,9 +149,9 @@ export default function ClippedDrawer(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <div>
-        <Paper />
+        <div component={Paper}>
           <Container maxWidth="sm">
+               
                     <h1>Add Item</h1>
                         <TextField
                             placeholder="Enter Id of Item"

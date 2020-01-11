@@ -15,7 +15,6 @@ class App extends Component {
     return (
           <BrowserRouter>
            <Switch>
-            
              <Route exact path="/" component={Registerform} />
              <Route exact path="/login" component={Loginform} />
              <PrivateRoute exact isloggedin={isLoggedIn()} path="/main" component={Main} />
