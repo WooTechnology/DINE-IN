@@ -19,11 +19,23 @@ class User(db.Model):
     password = db.Column(db.String(60), nullable=False)
 
     def __repr__(self):
-        return f"User('{self.firstname}','{self.lastname}', '{self.email}')"
+        return f"User('{self.firstname}','{self.lastname}', '{self.email}','{self.password}')"
+
+
+class Order(db.Model):
+    orderid = db.Column(db.Integer, unique=True, nullable=False, primary_key=True)
+    status = db.Column(db.String(30),nullable=False)
+    userid = db.Column(db.Integer, unique=True, nullable=False)
+    food = db.Column(db.Text, nullable=False)
+    tableno = db.Column(db.Integer, nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"Order('{self.orderid}','{self.status}', '{self.userid}', '{self.food}', '{self.tableno}', '{self.amount}')"
 
 
 class Food(db.Model):
-    id = db.Column(db.Integer, unique=True , primary_key=True)
+    id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String(60), unique=True, nullable=False)
     description = db.Column(db.String(120), nullable=False)
     amount = db.Column(db.Integer, nullable=False)
@@ -138,6 +150,43 @@ def menu():
         items.append({'id': item.id, 'name': item.name, 'description': item.description, 'amount': item.amount})
 
     return jsonify({'food_items': items})
+
+
+@app.route('/order_delete', methods=['POST'])
+def order_delete():
+    if request.method == 'POST':
+        order_data = request.get_json()
+        
+        data = Order.query.filter_by(orderid=order_data[0]['orderid']).first()
+        db.session.delete(data)
+        db.session.commit()
+
+        return 'Done'
+
+
+@app.route('/order', methods=['GET', 'POST'])
+def order_food():
+    if request.method == 'GET':
+        order_list = Order.query.all()
+        items = []
+
+        for item in order_list:
+            items.append({'orderid': item.orderid, 'status': item.status, 'userid': item.userid, 'food': item.food, 'tableno': item.tableno, 'amount': item.amount})
+
+        print(items)  
+
+        return jsonify({'order_items': items})
+
+
+@app.route('/update_status/<idx>', methods=['GET', 'POST'])
+def update_status(idx):
+    if request.method == 'POST':
+        status_update = request.get_json()
+        data = Order.query.filter_by(orderid=idx).first()
+        data.status = status_update['status']
+        db.session.commit()
+
+        return 'Done' 
 
 
 if __name__ == "__main__":

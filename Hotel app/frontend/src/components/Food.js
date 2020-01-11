@@ -14,9 +14,10 @@ class Food extends Component {
   };
 
   componentDidMount(){
-    fetch("/menu").then( res => res.json()).then(data =>
+    fetch("/menu").then( res => res.json()).then(data =>{
          this.setState({data : data.food_items})
-      )
+         console.log(data.food_items)
+    })
   }
 
   handleRemove = i => {

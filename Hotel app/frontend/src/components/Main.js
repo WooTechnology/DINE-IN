@@ -13,6 +13,7 @@ import {deleteTokens} from './auth';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
+import Order from './Order';
 
 const drawerWidth = 240;
 
@@ -111,6 +112,7 @@ export default function ClippedDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Order />
       </main>
     </div>
   );
