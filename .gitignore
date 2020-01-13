@@ -1,0 +1,8 @@
+/customerapp/manage.py
+/config.py
+/customerapp/routes.py
+/customerapp/forms.py
+/customerapp/models.py
+/.flaskenv
+/customerapp.py
+/migrations

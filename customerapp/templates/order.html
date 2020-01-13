@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+
+{% block head %}
+<title>DINE-IN</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="jumbotron text-center">
+        <h1 style="text-align: center">Your Order</h1>
+        
+        <table>
+            <tr>
+                <th style="text-align: center">Food Items</th>
+                <th style="text-align: center">Bill Amount</th>
+            </tr>
+            <br>
+            <tr>
+                <td>{{ current_order.food }}</td>
+                <td>{{ current_order.total_amount }}</td>
+            </tr>
+            
+        </table>
+        <br>
+            <a href="/confirm-order/{{current_order.id}}" class="btn btn-primary btn-lg">Confirm Order</a>
+        </div>
+{% endblock %}

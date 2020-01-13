@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="content">
+        <h1 style="text-align: center">All Users</h1>
+        <table>
+            <!-- <tr>
+                <th>Task</th>
+                <th>Added On</th>
+                <th>Actions</th>
+            </tr> -->
+            {% for user in all_users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div> 
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+
+{% block head %}
+<title>DINE-IN</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h3>Thankyou for the order!</h3>
+    <p class="lead">Your order is {{ current_order.status }}</p>
+</div>
+{% endblock %}

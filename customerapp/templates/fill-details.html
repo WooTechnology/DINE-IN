@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<title>DINE-IN</title>
+{% endblock %}
+
+{% block body %} 
+<h1>Register</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<div class="form">
+    <form method="POST" action="foodmenu">
+        <div class="form-group">
+            {{render_field(form.name, class_="form-control")}}
+        </div>
+        <div class="form-group">
+            {{render_field(form.email, class_="form-control")}}
+        </div>
+        <div class="form-group">
+            {{render_field(form.mobile_no, class_="form-control")}}
+        </div>
+        <div class="form-group">
+            {{render_field(form.no_of_guests, class_="form-control")}}
+        </div>
+        <div class="form-group">
+            {{render_field(form.table_no, class_="form-control")}}
+        </div>
+        
+        <p><input type="submit" class="btn btn-primary" value="Continue"></p>
+    </form>
+</div>
+{% endblock %}

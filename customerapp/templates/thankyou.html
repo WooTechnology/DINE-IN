@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+
+{% block head %}
+<title>DINE-IN</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Thankyou for visiting DINE-IN!</h1>
+        <h2>Please visit us again! </h2>
+        {% if session.logged_in == NULL %}
+            <a href="/check-in" class="btn btn-primary btn-lg">Check-in</a>
+        {% endif %}
+    </div>
+{% endblock %}
