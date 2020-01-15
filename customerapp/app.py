@@ -126,14 +126,14 @@ def checkin():
     return render_template("scanQR.html")
 
 
-@app.route("/fill-details", methods=['GET','POST'])
-def fillcustomerdetails():
+@app.route("/fill-details/<int:table_no>", methods=['GET','POST'])
+def fillcustomerdetails(table_no):
     """render page for filling in customer details"""
 
     session.logged_in = True
     if request.method == 'POST':    # with QR code of the table
-        form = CustomerDetailsForm(request.form)
-        return render_template("fill-details.html", session=session)
+        form = CustomerDetailsForm()
+        return render_template("fill-details.html", table_no = table_no, session=session)
     else:
         form = CustomerDetailsForm()
         return render_template("fill-details.html", form=form, session=session)
@@ -171,6 +171,9 @@ def menu():
 @app.route("/place-order/<int:id>")
 def placeorder(id): # id is the "id" of the order being placed through menu.html page
     """render the the order and bill summary page : order.html"""
+
+    # TO DO : add the order details returned by menu.html (maybe json object) to the Orders table
+
 
     # TO DO : fetch the details of the concerned order from "Orders" table
     current_order = Orders.query.get_or_404(id)
