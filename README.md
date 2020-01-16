@@ -15,7 +15,7 @@ After pulling the code in your computer's folder:
 3.cd DINE-IN,cd Hotel App
 
 
-4.Once reaching the Hotel app folder:-
+4.Once Hotel app's folder is reached:-
 
 
 For Frontend:
