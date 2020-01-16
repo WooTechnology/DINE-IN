@@ -18,13 +18,12 @@ const useStyles = makeStyles({
 
 const test = fooditem => {
   return (
-    <ul>
-      {
-        Object.keys(fooditem).map(key => {
-          return <li>{key} x{fooditem[key]}</li>
-        })
-      }
-    </ul>
+      <ul>
+        {fooditem.map((x,i) => {
+          const hh = x.quantity*x.price;
+        return <li>{x.name} x{x.quantity}: Rs.{hh}</li>
+        })}
+      </ul>
   )
 }
 
@@ -56,6 +55,7 @@ const row = (x,i,props) => {
       <TableRow key={`tr-${i}`}>
         {header.map((y, k) => (
         <TableCell key={`trc-${k}`}>
+          {console.log(x['food'])}
            {y.prop === 'food' ? test(JSON.parse(x[y.prop])) : x[y.prop]}
         </TableCell>
       ))}

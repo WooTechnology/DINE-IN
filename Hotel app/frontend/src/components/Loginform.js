@@ -51,7 +51,7 @@ export default class Registerform extends React.Component {
         }).then( res => res.json())
         .then(data=>{
           localStorage.setItem('access_token', data.access_token);
-          localStorage.setItem('username', data.email)
+          localStorage.setItem('email', data.email)
     
           if (localStorage.getItem("access_token") !== null && localStorage.getItem("access_token")!=="undefined") {
             window.location.replace("/main")

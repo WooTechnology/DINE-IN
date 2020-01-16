@@ -114,7 +114,7 @@ export default function ClippedDrawer() {
         <div className={classes.toolbar} />
         <List>
         <ListItem button>
-          <ListItemText primary="Order" />
+          <ListItemText primary="Order" onClick={homepage} />
         </ListItem>
         <ListItem button onClick={handleClick}>
         <ListItemText primary="Menu" />
