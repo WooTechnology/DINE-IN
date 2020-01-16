@@ -1,17 +1,17 @@
 import React from 'react';
 import {Route,Redirect } from "react-router-dom";
-import {isLoggedInManager} from './auth';
+import {isLoggedInCustomer} from './auth';
 
-export const PrivateRoute = ({ component: Component, ...rest }) => (
+export const PrivateRouteCustomer = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-        isLoggedInManager() ? (
+        isLoggedInCustomer() ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: "/customer",
             state: { from: props.location }
           }}
         />
