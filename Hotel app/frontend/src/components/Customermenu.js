@@ -60,7 +60,7 @@ export default class Customermenu extends React.Component {
 
    handleConfirm = () => {
      if(isLoggedInCustomer()){
-      const sessid = localStorage.getItem("customer_access_token");
+      const sessid = sessionStorage.getItem("customer_access_token");
       const food = JSON.stringify(this.state.food);
       const grandtotal = this.state.grandtotal;
       const customerorder = {'sessionid':sessid,food,grandtotal}

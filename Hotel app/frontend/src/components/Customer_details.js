@@ -70,11 +70,11 @@ export default class Customerform extends React.Component {
           body: JSON.stringify(user)
         }).then( res => res.json())
         .then(data=>{
-          localStorage.setItem('customer_access_token', data.customer_access_token);
+           sessionStorage.setItem('customer_access_token', data.customer_access_token);
           
-          localStorage.setItem('customer_email', data.email);
+           sessionStorage.setItem('customer_email', data.email);
     
-          if (localStorage.getItem("customer_access_token") !== null && localStorage.getItem("customer_access_token")!=="undefined") {
+          if (sessionStorage.getItem("customer_access_token") !== null && sessionStorage.getItem("customer_access_token")!=="undefined") {
             window.location.replace("/scan")
           }
           else{

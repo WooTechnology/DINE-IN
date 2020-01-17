@@ -218,7 +218,7 @@ def add_table(sessionidx):
 
 
 @app.route('/getpayment', methods=['POST'])
-def cc():
+def getpayment():
     user_data = request.get_json()
     sessid = user_data['sessionid']
     customer = Customer.query.filter_by(sessionid=sessid).first()

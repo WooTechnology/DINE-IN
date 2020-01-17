@@ -43,7 +43,7 @@ export default function SimpleCard() {
   const [toggle, setToggle] = React.useState(false);
   
   useEffect(() => {
-    const sessid = localStorage.getItem("customer_access_token");
+    const sessid = sessionStorage.getItem("customer_access_token");
     fetch("/getpayment",{
         method: "POST",
         headers: {
