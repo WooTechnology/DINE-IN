@@ -62,13 +62,7 @@ const additem = () => {
   window.location.replace("/add")
 }
 
-const updateitem = () => {
- window.location.replace("/update")
-}
 
-const deleteitem = () => {
- window.location.replace("/delete")
-}
  
 
 export default function ClippedDrawer(props) {
@@ -120,7 +114,7 @@ export default function ClippedDrawer(props) {
         <div className={classes.toolbar} />
         <List>
         <ListItem button>
-          <ListItemText primary="Order" />
+          <ListItemText primary="Order" onClick={homepage} />
         </ListItem>
         <ListItem button onClick={handleClick}>
         <ListItemText primary="Menu" />
@@ -133,12 +127,6 @@ export default function ClippedDrawer(props) {
           </ListItem>
           <ListItem button className={classes.nested}>
             <ListItemText primary="Add Item" onClick={additem} />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemText primary="Update Item" onClick={updateitem} />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemText primary="Delete Item" onClick={deleteitem} />
           </ListItem>
          </List>
          </Collapse>

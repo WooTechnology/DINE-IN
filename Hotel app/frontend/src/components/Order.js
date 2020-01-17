@@ -12,7 +12,7 @@ export default function Order(){
         fetch("/order").then( res => res.json()).then(data =>{
             setData(data.order_items)
         })
-    }, 20000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -44,10 +44,6 @@ export default function Order(){
               prop: "orderid"
             },
             {
-              name: "Userid",
-              prop: "userid"
-            },
-            {
               name: "Status",
               prop: "status"
             },
@@ -62,6 +58,10 @@ export default function Order(){
             {
               name: "Amount",
               prop: "amount"
+            },
+            {
+              name: "Datetime",
+              prop: "datetime"
             }
           ]}
           />
