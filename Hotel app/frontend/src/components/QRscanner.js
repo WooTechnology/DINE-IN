@@ -14,8 +14,8 @@ export default class Example extends Component {
   handleScan(data){
     if(data){
       this.setState({ result: data })
-      if (localStorage.getItem("customer_access_token") !== null && localStorage.getItem("customer_access_token")!=="undefined") {
-        const sessionidx = localStorage.getItem("customer_access_token")
+      if (sessionStorage.getItem("customer_access_token") !== null && sessionStorage.getItem("customer_access_token")!=="undefined") {
+        const sessionidx = sessionStorage.getItem("customer_access_token")
          fetch(`/add_table/${sessionidx}`, {
           method: "POST",
           headers: {

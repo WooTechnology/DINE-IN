@@ -3,7 +3,7 @@ export function isLoggedInManager() {
   }
 
 export function isLoggedInCustomer() {
-   return localStorage.getItem("customer_access_token")!==null && localStorage.getItem("customer_access_token")!=="undefined";
+   return sessionStorage.getItem("customer_access_token")!==null && sessionStorage.getItem("customer_access_token")!=="undefined";
 }
   
   export function deleteTokens(){
@@ -12,8 +12,8 @@ export function isLoggedInCustomer() {
   }
 
   export function deleteTokensCustomer(){
-    localStorage.removeItem("customer_access_token");
-    localStorage.removeItem("customer_email");
+    sessionStorage.removeItem("customer_access_token");
+    sessionStorage.removeItem("customer_email");
  }
 
   export function requiredAuth(nextState, replace) {
