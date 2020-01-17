@@ -18,11 +18,15 @@ After pulling the code in your computer's folder:
 4.Once Hotel app's folder is reached:-
 
 
-For Frontend:
+# For Frontend:
 
 Go to frontend folder using cd frontend and
 # Type the command: npm start
-For Backend:
+
+
+# For Backend:
+
+
 Go to server folder using cd server and
 # Type the command: python3 app.py
 You can open 2 separate tabs of command line to run both frontend and backend simultaneously.
