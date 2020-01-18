@@ -6,3 +6,7 @@
 /.flaskenv
 /customerapp.py
 /migrations
+/env
+/.vscode
+/__pycache__
+/customerapp/__pycache__
