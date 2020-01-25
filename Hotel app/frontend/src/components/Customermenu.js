@@ -38,7 +38,14 @@ export default class Customermenu extends React.Component {
      const item = this.state.food[i].price;
      this.setState(prevState => {
        let fooditem = {...prevState.food}
+       console.log(fooditem);
        fooditem[i].quantity = fooditem[i].quantity - 1;
+       /*if(fooditem[i].quantity === 0){
+           return {food: this.state.food.filter((row,j) => j!==i)}
+       }
+       else{
+          return { fooditem }
+       }*/
        return { fooditem }
      })
      this.setState(prevState => {
