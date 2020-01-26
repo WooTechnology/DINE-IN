@@ -2,3 +2,4 @@
 static/
 templates/
 __pycache__
+venv/
