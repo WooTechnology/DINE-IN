@@ -87,11 +87,27 @@ const handleClick = () => {
    }
 }
 
+const handleCancel = () => {
+  const sessid = sessionStorage.getItem("customer_access_token");
+  fetch("/order_cancel",{
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json"
+    },
+    body: JSON.stringify({'sessionid':sessid})
+  }).then(res => {
+    if(res.ok){
+      alert("Order cancelled");
+      window.location.replace("/place_order")
+    }
+  })
+}
+
   return (
       <div className="bg3">
     <Card className={classes.card}>
       <CardContent>
-        <Button variant="outlined" color="primary" onClick={() => {window.location.replace("/place_order")}}>Go back to Menu</Button>
+      <button style={{display:"block", margin: "auto" ,backgroundColor:'red',color:"white",fontSize:"16px",marginBottom: "20px", height: "40px",width: 200}} onClick={() => handleCancel()}>Cancel Order</button>
         <Typography variant="h5" component="h2">
             {data1.name}
         </Typography>
@@ -131,7 +147,7 @@ const handleClick = () => {
         </div> 
       </CardContent>
       <CardActions>
-      <button style={{display:"block", width: "100%", backgroundColor:'green',color:"white", padding:" 15px 32px",fontSize:"16px", pointerEvents: "cursor",marginBottom: "20px"}} onClick={() => handleClick()}>Pay</button>
+      <button pointer="cursor" style={{display:"block", width: "100%", backgroundColor:'green',color:"white", padding:" 15px 32px",fontSize:"16px", pointer:"cursor", marginBottom: "20px"}} onClick={() => handleClick()}>Pay</button>
       </CardActions>
     </Card>
     </div>
