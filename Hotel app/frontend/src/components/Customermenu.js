@@ -34,19 +34,21 @@ export default class Customermenu extends React.Component {
       alert("Item added to cart");
    } 
 
-   handleRemove = (key,i) => {
+  handleRemove = (key,i) => {
      const item = this.state.food[i].price;
      this.setState(prevState => {
-       let fooditem = {...prevState.food}
-       fooditem[i].quantity = fooditem[i].quantity - 1;
-       return { fooditem }
-     })
-     this.setState(prevState => {
-       console.log(this.state.food[i].price)
-       return {grandtotal: prevState.grandtotal - this.state.food[i].price}
-     })
-   };
-  
+      let fooditem = {...prevState.food}
+      fooditem[i].quantity = fooditem[i].quantity - 1;
+       if(fooditem[i].quantity===0){
+         return {food: this.state.food.filter((row,j) => j!==i)}
+     
+       }
+       else{
+        return {fooditem};
+       }
+       return{fooditem};
+       })
+      
    handleAdd = (i) => {
     this.setState(prevState => {
       let fooditem = {...prevState.food}
