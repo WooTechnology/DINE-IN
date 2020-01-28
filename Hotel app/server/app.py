@@ -272,6 +272,17 @@ def order_food():
         return 'Done'
 
 
+@app.route('order_cancel', methods=['GET,POST'])
+def order_cancel():
+    data = request.get_json()
+    sessionidx = data['sessionid']
+    order = Customer.query.filter_by(sessionid=sessionidx).orders.first()
+    db.session.delete(order)
+    db.session.commit()
+
+        return 'Done'
+
+
 @app.route('/update_status/<idx>', methods=['GET', 'POST'])
 def update_status(idx):
     if request.method == 'POST':
