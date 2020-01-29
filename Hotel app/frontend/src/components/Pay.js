@@ -94,7 +94,7 @@ const handleCancel = () => {
     headers: {
     "Content-Type": "application/json"
     },
-    body: JSON.stringify({'sessionid':sessid})
+    body: JSON.stringify({'sessionid':sessid,'orderid':data1.orderid})
   }).then(res => {
     if(res.ok){
       alert("Order cancelled");

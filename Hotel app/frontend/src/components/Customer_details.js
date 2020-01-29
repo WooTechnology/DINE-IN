@@ -37,8 +37,13 @@ export default class Customerform extends React.Component {
             mobileError = "Field Empty!!";
         }
 
-        if (!this.state.email.includes("@")) {
+        if (!this.state.email.includes("@")||this.state.email.includes(" ")) {
             emailError = "Invalid Email";
+        }
+
+        if (this.state.mobileno.length!==10)
+        {
+          mobileError="Invalid Mobile Number";
         }
 
         if(!this.state.guests){
