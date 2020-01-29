@@ -31,7 +31,7 @@ class Customer(db.Model):
     customer_email = db.Column(db.String(120), nullable=False)
     mobileno = db.Column(db.Integer, nullable=False)
     no_of_guests = db.Column(db.Integer, nullable=False)
-    sessionid = db.Column(db.String(120), nullable=False)
+    sessionid = db.Column(db.Text, nullable=False)
     tableno = db.Column(db.String(40))
     orders = db.relationship('Order', backref='author', lazy=True)
 
@@ -45,10 +45,11 @@ class Order(db.Model):
     food = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Integer, nullable=False)
     date_ordered = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    tableno = db.Column(db.String(40), db.ForeignKey('customer.tableno'), nullable=False)
+    tableno = db.Column(db.String(40),nullable=False)
+    sessionid = db.Column(db.Text, db.ForeignKey('customer.sessionid'), nullable=False)
 
     def __repr__(self):
-        return f"Order('{self.orderid}', '{self.status}', '{self.food}', '{self.amount}', '{self.tableno}','{self.date_ordered}')"
+        return f"Order('{self.orderid}', '{self.status}', '{self.food}', '{self.amount}', '{self.tableno}','{self.date_ordered}','{self.sessionid}')"
 
 
 class Food(db.Model):
@@ -263,7 +264,8 @@ def order_food():
             status='Food is being prepared',
             food=order_data['food'],
             amount=order_data['grandtotal'],
-            tableno=customer.tableno
+            tableno=customer.tableno,
+            sessionid=sessid
         )
 
         db.session.add(data)
@@ -272,15 +274,16 @@ def order_food():
         return 'Done'
 
 
-@app.route('order_cancel', methods=['GET,POST'])
+@app.route('/order_cancel', methods=['POST'])
 def order_cancel():
     data = request.get_json()
     sessionidx = data['sessionid']
-    order = Customer.query.filter_by(sessionid=sessionidx).orders.first()
+    order_id = data['orderid']
+    order = Order.query.filter_by(sessionid=sessionidx,orderid=order_id).first()
     db.session.delete(order)
     db.session.commit()
 
-        return 'Done'
+    return 'Done'
 
 
 @app.route('/update_status/<idx>', methods=['GET', 'POST'])
