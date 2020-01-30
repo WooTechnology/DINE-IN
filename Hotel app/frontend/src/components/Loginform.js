@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./forms.css"
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -96,6 +97,9 @@ export default class Registerform extends React.Component {
                             margin="normal"
                             fullWidth="true"
                         />
+                        <br />
+                        <Link to="/register">New User? Click here to Register</Link>
+                        <br />
                         <br />
                         <Button
                             color="primary"
