@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 const logout = (e) => {
    e.preventDefault();
    deleteTokens();
-   window.location.replace('/');
+   window.location.replace('/register');
 }
 
 const navlink = () => {
